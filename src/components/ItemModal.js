@@ -5,78 +5,76 @@ import {
 } from 'reactstrap';
 import { addItem } from '../actions/itemActions'
 import uuid from 'uuid'
-import { getItems } from '../actions/itemActions';
 import { connect } from 'react-redux';
 
 export class ItemModal extends Component {
-    // state = {
-    //     modal: false,
-    //     name: ''
-    // }
+    state = {
+        modal: false,
+        name: ''
+    }
 
-    // toggle = () => {
-    //     this.setState({
-    //         modal: !this.state.modal
-    //     });
-    // }
+    toggle = () => {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
 
-    // onChange = (e) => {
-    //     this.setState({ 
-    //         [e.target.name] : e.target.value
-    //     });
-    // }
+    onChange = (e) => {
+        this.setState({ 
+            [e.target.name] : e.target.value
+        });
+    }
 
-    // onSubmit = (e) => {
-    //     e.preventDefault();
+    onSubmit = (e) => {
+        e.preventDefault();
 
-    //     const newItem = {
-    //         id: uuid(),
-    //         name: this.state.name
-    //     }
+        const newItem = {
+            id: uuid(),
+            name: this.state.name
+        }
 
-    //     this.props.addItem(newItem)
+        this.props.addItem(newItem)
 
-    //     this.toggle();
-    // } 
+        this.toggle();
+    } 
   
     render() {
         console.log(this.props)
         console.log(this.state)
         return (
-            // <div>
-            //     <Button 
-            //         color="dark"
-            //         style={{marginBottom: '2rem'}}
-            //         onClick={this.toggle}>
-            //         Add Item
-            //     </Button>
-            //     <Modal
-            //         isOpen={this.state.modal}
-            //         toggle={this.toggle}>
-            //     <ModalHeader toggle={this.toggle}>Add to shopping list</ModalHeader>
-            //     <ModalBody>
-            //         <Form onSubmit={this.onSubmit}>
-            //             <FormGroup>
-            //                 <Label for="item">Item</Label>
-            //                 <Input 
-            //                     type="text"
-            //                     name="name"
-            //                     id="item"
-            //                     placeholder="Add shopping item"
-            //                     onChange={this.onChange}
-            //                     />
-            //                 <Button 
-            //                     color="dark"
-            //                     style={{marginTop: '2rem'}}
-            //                     block>
-            //                     Add Item
-            //                 </Button>
-            //             </FormGroup>
-            //         </Form>
-            //     </ModalBody>
-            //     </Modal>
-            // </div>
-            <div></div>
+            <div>
+                <Button 
+                    color="dark"
+                    style={{marginBottom: '2rem'}}
+                    onClick={this.toggle}>
+                    Add Item
+                </Button>
+                <Modal
+                    isOpen={this.state.modal}
+                    toggle={this.toggle}>
+                <ModalHeader toggle={this.toggle}>Add to shopping list</ModalHeader>
+                <ModalBody>
+                    <Form onSubmit={this.onSubmit}>
+                        <FormGroup>
+                            <Label for="item">Item</Label>
+                            <Input 
+                                type="text"
+                                name="name"
+                                id="item"
+                                placeholder="Add shopping item"
+                                onChange={this.onChange}
+                                />
+                            <Button 
+                                color="dark"
+                                style={{marginTop: '2rem'}}
+                                block>
+                                Add Item
+                            </Button>
+                        </FormGroup>
+                    </Form>
+                </ModalBody>
+                </Modal>
+            </div>
         )
 
   }
@@ -87,4 +85,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect()(ItemModal);
+export default connect(mapStateToProps, {addItem} )(ItemModal);

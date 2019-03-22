@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 export class ShoppingList extends Component {
 
@@ -22,4 +22,9 @@ const mapStateToProps = (state) => ({
     item: state.item
 })
 
-export default connect()(ShoppingList);
+
+const mapDispatchToProps = (dispatch) => {
+  console.log(dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);

@@ -7,16 +7,16 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
-const middleware = [thunk];
+// const middleware = [thunk];
 
-const store = createStore(rootReducer, 
-    compose(
-        applyMiddleware(...middleware)
-    )
-);
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+// const store = createStore(rootReducer, 
+//     compose(
+//         applyMiddleware(...middleware)
+//     )
+// );
+// ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change

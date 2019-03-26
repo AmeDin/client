@@ -6,13 +6,18 @@ import { Container } from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { loadUser } from './actions/authActions';
+import store from './store';
+import { Provider } from 'react-redux';
 
 class App extends Component {
   componentDidMount() {
+    store.dispatch(loadUser());
   }
 
   render() {
     return (
+      <Provider store={store}>
         <div className='App'>
           <AppNavbar />
           <Container>
@@ -20,8 +25,8 @@ class App extends Component {
             <ShoppingList />
           </Container>
         </div>
+      </Provider>
     );
   }
 }
-
 export default App;
